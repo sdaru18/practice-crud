@@ -1,0 +1,33 @@
+<h1 class="text-cyan-400">書籍列表 </h1>
+
+<%= link_to '新增書籍', new_book_path %>
+
+<table>
+    <thead>
+      <tr>
+        <td class ="text-lg">作家</td>
+        <td class ="text-lg">書名</td>
+        <td class ="text-lg">價錢</td>
+        <td class ="text-lg">簡介</td>
+      </tr>    
+      
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td><%= book.writer %></td>
+        <td><%= book.title %></td>
+        <td><%= book.price %></td>
+        <td><%= book.introduction %></td>
+
+        <td>
+            <%= link_to '修改', edit_book_path(book)%>
+            <%= link_to '刪除', book_path(book), method: "delete",data: {confirm: "確認刪除嗎？" } %>
+        </td>
+
+      </tr>
+
+      <% end %>
+    </tbody>
+  </table>
